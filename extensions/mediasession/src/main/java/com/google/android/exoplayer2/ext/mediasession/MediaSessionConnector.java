@@ -1055,6 +1055,11 @@ public final class MediaSessionConnector {
           player.isCurrentMediaItemDynamic() || player.getDuration() == C.TIME_UNSET
               ? -1
               : player.getDuration());
+
+      if (mediaController.getPlaybackState() == null) {
+        throw new NullPointerException( "mediaController is null");
+
+      }
       long activeQueueItemId = mediaController.getPlaybackState().getActiveQueueItemId();
       if (activeQueueItemId != MediaSessionCompat.QueueItem.UNKNOWN_ID) {
         List<MediaSessionCompat.QueueItem> queue = mediaController.getQueue();
